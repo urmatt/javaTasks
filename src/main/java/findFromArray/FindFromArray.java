@@ -5,8 +5,8 @@ import java.util.Arrays;
 public class FindFromArray {
     public static void main(String[] args) {
         //Дан массив из чисел:
+//        int[] numbers = {2,-1, 5, 6, -320, 23, 3, 8, 22, 75, 4, -8, 35, 150, 322};
         int[] numbers = {2, 5, 6, 23, 3, 8, 22, 75, 4, -8, 35};
-//        int[] numbers = {1, 2, 3, 4, -2, 0, -3, -1};
         System.out.println("Min: " + getMin(numbers));
         System.out.println("Max: " + getMax(numbers));
         System.out.println("Middle: " + getMiddle(numbers));
@@ -14,19 +14,24 @@ public class FindFromArray {
 
     /**
      * Возвращает среднее число из массива
-     *
      * @param numbers массив чисел
      * @return среднее число
      */
     private static int getMiddle(int[] numbers) {
         int max = getMax(numbers);
         int firstMiddle = max - ((max - getMin(numbers)) / 2);
-        int middle = 0;
+        int middle = numbers[0]; //29
+        int secondMiddle = numbers[0];//32
 //        int[] numbers = {2, 5, 6, 23, 3, 8, 22, 75, 4, -8};
+//        int[] numbers = {2,-1, 5, 6, -320, 23, 3, 8, 22, 75, 4, -8, 35, 150, 322};
+
         for (int i = 0; i < numbers.length; i++) {
-//            Arrays.sort(numbers);
-            if (firstMiddle > numbers[i]) {
+            int a = firstMiddle - secondMiddle;//34-2 = 32
+            int b = firstMiddle - numbers[i]; //34-5= 29
+//                32 >29
+            if (Math.abs(a) > Math.abs(b)) {
                 middle = numbers[i];
+                secondMiddle = numbers[i];
             }
         }
 
@@ -48,7 +53,6 @@ public class FindFromArray {
                 max = numbers[i];
             }
         }
-
         return max;
     }
 
@@ -67,7 +71,6 @@ public class FindFromArray {
         }
         return min;
     }
-
 }
 
 
